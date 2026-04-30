@@ -107,3 +107,7 @@ Le script demande les chemins des deux decklists, optionnellement le PDF des rè
 1. Enrichir `rules_simple.py` (effets déclencheurs, counter, DON!!, etc.).
 2. Remplacer `cards_stub.csv` par un export réel et adapter `column_map` dans `config.yaml`.
 3. Augmenter `obs_dim` / graphe d’actions dans `env.py` si vous ajoutez des choix (cibles, DON attaché, …).
+
+## Showcase
+
+- Latest generated demo video: `docs/media/native_replay_20260430_043005.mp4`
