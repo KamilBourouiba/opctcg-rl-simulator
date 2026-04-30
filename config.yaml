@@ -1,0 +1,184 @@
+# Chemins par défaut (écrasés par les entrées interactives de train.py)
+paths:
+  rules_pdf: "~/Downloads/rule_comprehensive.pdf"
+  cards_csv: "data/cards_tcgcsv.csv"
+  rules_corpus_out: "data/rules_corpus.txt"
+
+# Colonnes CSV cartes (aliases pour fusionner un export tcgcsv / TCGplayer)
+card_csv:
+  id_column: "card_id"
+  name_column: "name"
+  cost_column: "cost"
+  power_column: "power"
+  counter_column: "counter"
+  color_column: "color"
+  # Optionnel : clé logique « image_url » → colonne du CSV (ex. export tcgcsv « imageUrl »)
+  # image_url: "imageUrl"
+
+# Données réelles : script ``scripts/fetch_opcg_tcgcsv.py`` (API JSON tcgcsv, pas d'API key)
+tcgcsv:
+  category_id: 68
+  output_csv: "data/cards_tcgcsv.csv"
+
+training:
+  # ── Hyperparamètres PPO — défauts issus de scripts/bench_throughput_grid.py ────
+  #
+  # 16 envs × 64 steps = 1024 transitions/update ; minibatch 1024.
+  #
+  total_steps:    5000000000
+  rollout_len:    1024     # 16 envs × 64 steps/env
+  gamma:          0.995    # Discount plus élevé → vision long terme
+  lam:            0.95     # λ GAE
+  lr:             2.5e-4   # LR de base (cosine warmup + decay dessus)
+  weight_decay:   1e-4     # Régularisation AdamW
+  warmup_frac:    0.03     # 3% d'updates en warmup LR linéaire
+  clip_eps:       0.2      # Clipping PPO (standard)
+  # Annealing linéaire de ε (début → fin) sur la progression d’updates ; même valeur = désactivé.
+  clip_eps_end:   0.2
+  # KL approx. moyenne (old vs new) : arrêt des passes PPO restantes si > seuil (0 = désactivé).
+  target_kl:      0.0
+  # Moins d’epochs = plus de steps/s (moins de backward par update) ; 8 = plus stable.
+  epochs:         6        # Passes PPO par rollout
+  minibatch:      1024     # = rollout_len
+  # ── Entropie ──────────────────────────────────────────────────────────────
+  ent_coef_start: 0.05     # Exploration initiale
+  ent_coef_end:   0.002    # Exploitation en fin de training
+  # ── Réseau résiduel ──────────────────────────────────────────────────────
+  obs_dim:        96
+  hidden:         1024     # 1024 hidden → 6.47M params
+  n_res:          3        # proj → 3 × ResBlock → pi/v heads
+  # Running mean/std sur le vecteur d’observation (type VecNormalize) — complète le LayerNorm interne.
+  obs_normalize:       false
+  # Clip |z| après normalisation ; 0 = pas de clip.
+  obs_normalize_clip:  10.0
+  # Échelle des rewards par σ courant (mise à jour en ligne) avant GAE — les logs « rew » restent en brut.
+  reward_normalize:       false
+  reward_normalize_epsilon: 1e-4
+  seed:           42
+  # ── Accélération matérielle ──────────────────────────────────────────────
+  torch_compile:  false    # DÉSACTIVÉ : sur MPS, torch.compile est 7× plus lent (Metal n'a pas CUDA Graphs)
+  use_amp:        false    # fp16 MPS ≈ fp32 sur cette archi → désactivé
+  # Ressources CPU / RAM : ``resource_profile`` + ``n_envs`` (0 = auto selon profil)
+  resource_profile: balanced   # balanced | max | conservative  ;  CLI --max-resources = max
+  n_envs_max_cap:   64          # plafond n_envs si profil max ou --max-resources
+  # 1 env = débit faible ; 16× avec rollout 1024 → 64 steps/env/update (voir commentaire rollout_len).
+  n_envs:         16          # >0 : prioritaire sauf ``max`` / ``--max-resources``
+  # Optionnel (A/B) : plafonne les threads PyTorch du processus principal (mise à jour PPO).
+  # Les workers VecEnv restent à BLAS=1 (voir runtime_resources.configure_worker_blas_threads).
+  # main_torch_num_threads: 4
+  # main_torch_interop_threads: 2
+  # Core ML : re-export (MIL) seulement 1× sur N updates — moins de logs tqdm + moins de contention CPU
+  coreml_sync_every: 12     # macOS : 12 ≈ bon compromis stp/s vs fraîcheur du modèle ANE
+  # ── Checkpoints / vidéos ──────────────────────────────────────────────────
+  checkpoint_every: 0
+  # Un .pt tous les N steps d'environnement cumulés (tous les envs). Pas de checkpoint par update si checkpoint_every: 0.
+  checkpoint_every_steps: 100000
+  # Vidéo MP4 pendant PPO (jsonl temporaire pendant l’encodage, supprimé après — voir generate_video).
+  # Priorité : video_every_episodes > video_every_steps > video_every (updates).
+  # video_every (updates) : 1re MP4 « périodique » à l’update N quand N % video_every == 0 (ex. 50 → update 50).
+  # video_on_first_update : si true, une MP4 aussi dès l’update 1 (sinon rien avant la 1re période).
+  # Mettre video_every: 0 (et false ci‑dessous) pour viser ~2k stp/s : chaque MP4 clone le réseau + FFmpeg.
+  video_every: 0
+  video_on_first_update: false
+  video_every_steps: 0
+  video_every_episodes: 0
+  # Métriques PPO (JSONL) — chemin relatif = relatif à la racine du dépôt (plus au cwd).
+  metrics_jsonl: runs/metrics.jsonl
+  # Plafond d’updates entre deux lignes metrics / logs (sinon total_steps énorme → intervalle énorme)
+  metrics_log_every_updates_max: 100
+  # ── Boucle infinie (CLI --until-stop) : PPO réel jusqu'à « stop » ou fichier STOP ──
+  train_until_stop: false
+  train_until_stop_max_updates: 1000000000
+  until_stop_warmup_updates: 400
+  until_stop_log_every_updates: 20
+  ent_anneal_updates: 20000
+  stop_trigger_path: STOP   # relatif au répertoire courant au lancement (ex. touch STOP)
+  # Dossier de listes .txt (ex. decks/tournament_op15) : ignore --deck / --deck1 ;
+  # paires tirées comme le gauntlet web. Vide ou absent = paire fixe --deck.
+  gauntlet_decks_dir: "decks/tournament_op15"
+  # ``*.txt`` : tous les decks valides du dossier (NAMIBY, KAIDO, p0001… — plus de variété).
+  # ``p*_*.txt`` seulement : listes tournoi (souvent la même méta ex. Enel).
+  gauntlet_deck_glob: "*.txt"
+
+sim:
+  # Effets parsés précompilés (évite le reparsing Keyword/Timing/Classifier au boot).
+  # Générer : python scripts/export_card_effects_json.py
+  # card_effects_snapshot: "data/card_effects_sim.json"
+  # Mutualise les listes ``effects`` / keywords entre cartes au même texte de règle (gain RAM).
+  effect_cache_dedupe: true
+  # Récompense terminal (ajoutée au dernier step quand la partie se termine). P0 = « agent »
+  # hors self-play vue P1 ; en self-play, la perspective courante reçoit win_reward si victoire.
+  # Augmenter win_reward (ou rendre loss_reward plus négatif) pousse à prendre plus de risques pour gagner.
+  win_reward: 18.0
+  loss_reward: -10.0
+  # Récompense immédiate [Activate: Main] (step) — le Leader est volontairement plus valorisé que les persos.
+  reward_activate_main_leader: 0.55
+  reward_activate_main_leader_fail: -0.06
+  reward_activate_main_character: 0.03
+  reward_activate_main_character_fail: -0.05
+  # Leader Enel jaune (OP05-098) : [Opponent's Turn] vie → 0 — bonus shaping côté défenseur (P0).
+  reward_leader_opponent_turn_life_zero: 0.45
+  # Limite « steps » env (filet si une partie dérape) — une partie normale ~10–15 tours
+  # ≈ quelques centaines de steps ; au-delà, tie-break vie + timeout_both_penalty.
+  max_episode_steps: 512
+  timeout_both_penalty: -4.0
+  # Fin forcée si ``turns_started`` (1 début de tour joueur par incrément) dépasse ce seuil.
+  # ~30 ≈ jusqu’à 15 tours par joueur en alternance ; pénalité pour apprendre à finir avant.
+  max_turns_started: 30
+  turn_cap_penalty: -8.0
+  # Après ce nombre de *débuts de tour* (``turns_started`` : 1=P0, 2=P1, …),
+  # si aucune carte n’a été jouée depuis la main (slots 0–6 : perso / event / stage),
+  # fin forcée + ``stall_no_card_penalty`` (ex. 7 = fin du 6e tour alterné = 3 tours par joueur).
+  stall_no_card_after_turns_started: 7
+  stall_no_card_penalty: -6.0
+  # Après un tour Main « passif » (piocher puis passer en combat sans rien faire en Main),
+  # bonus une fois au 2e tour du joueur+ sur la première action Main réussie (jouer, attach, Activate).
+  activity_after_idle_reward: 0.35
+  starting_hand: 5
+  # 0 = pas de limite de main (CR : pas de max sauf effet de carte). >0 = plafond optionnel pour le sim.
+  max_hand: 0
+  starting_life: 5
+  don_per_turn: 2
+  # CR 6-4-1 : le premier joueur ne place qu'1 DON!! lors de sa 1re phase DON!!
+  official_first_player_don: 1
+  # CR 6-3-1 : le premier joueur ne pioche pas lors de son 1er Draw Phase
+  skip_first_draw_first_player: true
+  max_don: 10
+  # CR 3-7-6 : maximum 5 cartes dans la Character area
+  max_board: 5
+  draw_per_turn: 1
+  leader_power: 5000
+  # IA adverse (P1 / combats aléatoires) : random = uniforme ; deterministic_min = plus petite action légale (reproductible, pas d’exploration RNG côté adversaire)
+  opponent_action_policy: deterministic_min
+  # Self-play : P0 et P1 pilotés par la même politique PPO (mulligan ×2, puis tours symétriques).
+  self_play: true
+  # false : pas de texte d’action / snapshot par step (défaut entraînement — beaucoup plus rapide).
+  step_trace: false
+
+  # Shaping par événements (perspective agent) : vie adverse, KO persos adverses, pioche.
+  # Les multiplicateurs start→end évoluent avec la progression d’entraînement (voir anneal_updates).
+  # Plafond max_per_step pour limiter le spam ; draw_mult_end < draw_mult_start évite de « farmer » la pioche en fin de run.
+  event_shaping:
+    enabled: true
+    w_opp_life: 0.28
+    w_opp_ko: 0.09
+    w_draw: 0.035
+    # Persos : poser sur le plateau + attaquer avec un perso (slot ≥ 1), pas seulement le leader.
+    w_play_character: 0.08
+    w_char_attack: 0.16
+    play_char_mult_start: 1.0
+    play_char_mult_end: 1.15
+    char_attack_mult_start: 1.05
+    char_attack_mult_end: 1.25
+    max_play_character_per_step: 2
+    max_per_step: 0.85
+    max_opp_life_hits_per_step: 3
+    life_mult_start: 0.65
+    life_mult_end: 1.25
+    ko_mult_start: 0.55
+    ko_mult_end: 1.12
+    draw_mult_start: 1.05
+    draw_mult_end: 0.28
+    episode_fallback_horizon: 420
+    # 0 = annealing sur total_steps/rollout ; >0 = dénominateur fixe (ex. boucle until_stop).
+    anneal_updates: 0

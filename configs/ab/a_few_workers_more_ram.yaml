@@ -1,0 +1,16 @@
+# Variante A : moins de workers (moins de RAM processus + IPC), mini-batch large,
+# threads PyTorch du process principal plafonnés (machine plus « cool » / marge CPU).
+training:
+  n_envs: 8
+  rollout_len: 4096
+  minibatch: 4096
+  resource_profile: conservative
+  main_torch_num_threads: 2
+  main_torch_interop_threads: 2
+  coreml_sync_every: 12
+  video_every: 0
+  video_every_episodes: 0
+  video_every_steps: 0
+  metrics_jsonl: runs/ab_a_few_workers.jsonl
+sim:
+  effect_cache_dedupe: true

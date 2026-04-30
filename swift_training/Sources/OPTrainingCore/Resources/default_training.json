@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "paths": {
+    "rules_pdf": "~/Downloads/rule_comprehensive.pdf",
+    "cards_csv": "data/cards_tcgcsv.csv",
+    "rules_corpus_out": "data/rules_corpus.txt"
+  },
+  "training": {
+    "total_steps": 8192,
+    "rollout_len": 512,
+    "gamma": 0.995,
+    "lam": 0.95,
+    "lr": 0.00025,
+    "weight_decay": 0.0001,
+    "clip_epsilon": 0.2,
+    "obs_dim": 96,
+    "hidden": 256,
+    "n_res_blocks": 2,
+    "synthetic_n_act": 64,
+    "batch_size": 128,
+    "seed": 42
+  }
+}

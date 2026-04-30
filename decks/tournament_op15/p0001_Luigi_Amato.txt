@@ -1,0 +1,21 @@
+# Egman tournament 009ab10b-49d1-4b3e-9342-5b6eb808c15a
+# Page : https://deckbuilder.egmanevents.com/optcg/tournaments?format=OP15&t=009ab10b-49d1-4b3e-9342-5b6eb808c15a
+# Joueur : Luigi Amato | Classement affiché : 1 | deck_type : OP11-041
+# Liste : https://deckbuilder.egmanevents.com/?deck=EB03-055:4,OP14-104:4,OP13-042:4,OP14-102:4,OP14-110:4,OP14-111:4,OP15-113:1,OP15-047:1,OP06-104:3,EB03-053:4,OP11-106:4,OP12-112:2,EB04-058:4,P-096:4,EB03-060:3,OP11-041:1&type=optcg
+
+4xEB03-055
+4xOP14-104
+4xOP13-042
+4xOP14-102
+4xOP14-110
+4xOP14-111
+1xOP15-113
+1xOP15-047
+3xOP06-104
+4xEB03-053
+4xOP11-106
+2xOP12-112
+4xEB04-058
+4xP-096
+3xEB03-060
+1xOP11-041

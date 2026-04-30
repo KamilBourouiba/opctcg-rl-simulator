@@ -1,0 +1,22 @@
+# Egman tournament 009ab10b-49d1-4b3e-9342-5b6eb808c15a
+# Page : https://deckbuilder.egmanevents.com/optcg/tournaments?format=OP15&t=009ab10b-49d1-4b3e-9342-5b6eb808c15a
+# Joueur : MerryTCG | Classement affiché : 16 | deck_type : OP05-098
+# Liste : https://deckbuilder.egmanevents.com/?deck=OP05-098:1,OP14-100:1,EB01-059:4,EB03-053:2,OP06-115:4,OP09-117:1,EB01-056:2,OP14-111:4,OP14-110:4,OP14-104:4,OP06-104:3,OP14-102:4,OP15-113:4,OP11-106:4,EB04-061:1,EB04-058:4,EB02-052:4&type=optcg
+
+1xOP05-098
+1xOP14-100
+4xEB01-059
+2xEB03-053
+4xOP06-115
+1xOP09-117
+2xEB01-056
+4xOP14-111
+4xOP14-110
+4xOP14-104
+3xOP06-104
+4xOP14-102
+4xOP15-113
+4xOP11-106
+1xEB04-061
+4xEB04-058
+4xEB02-052

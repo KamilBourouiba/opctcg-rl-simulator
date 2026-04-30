@@ -1,0 +1,10 @@
+# Variante B : plus d’envs, mini-batch intermédiaire (contraste vs défaut 4096 du config).
+training:
+  n_envs: 24
+  rollout_len: 4096
+  minibatch: 2048
+  resource_profile: balanced
+  video_every: 0
+  video_every_episodes: 0
+  video_every_steps: 0
+  metrics_jsonl: runs/ab_b_many_workers.jsonl

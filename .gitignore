@@ -1,0 +1,27 @@
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.env
+.env.*
+.DS_Store
+.vercel/
+*.egg-info/
+dist/
+wandb/
+*.log
+*.tmp
+
+# Artefacts d’entraînement locaux (optionnel : retire une ligne si tu veux versionner)
+runs/
+checkpoints/
+*.pt
+rule_comprehensive.pdf
+deck-stats/
+swift/.build/
+swift_training/.build/
+data/card_image_cache/

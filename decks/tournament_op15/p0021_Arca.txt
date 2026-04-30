@@ -1,0 +1,22 @@
+# Egman tournament 009ab10b-49d1-4b3e-9342-5b6eb808c15a
+# Page : https://deckbuilder.egmanevents.com/optcg/tournaments?format=OP15&t=009ab10b-49d1-4b3e-9342-5b6eb808c15a
+# Joueur : Arca | Classement affiché : 21 | deck_type : EB03-001
+# Liste : https://deckbuilder.egmanevents.com/?deck=OP13-012:4,EB03-024:4,OP11-054:4,EB03-006:3,OP10-011:4,ST23-001:4,EB04-024:4,EB04-023:3,OP13-058:2,OP09-009:4,OP06-007:3,OP05-118:1,OP08-118:3,EB04-007:2,OP10-045:4,OP06-058:1,EB03-001:1&type=optcg
+
+4xOP13-012
+4xEB03-024
+4xOP11-054
+3xEB03-006
+4xOP10-011
+4xST23-001
+4xEB04-024
+3xEB04-023
+2xOP13-058
+4xOP09-009
+3xOP06-007
+1xOP05-118
+3xOP08-118
+2xEB04-007
+4xOP10-045
+1xOP06-058
+1xEB03-001

@@ -1,0 +1,22 @@
+# Egman tournament 009ab10b-49d1-4b3e-9342-5b6eb808c15a
+# Page : https://deckbuilder.egmanevents.com/optcg/tournaments?format=OP15&t=009ab10b-49d1-4b3e-9342-5b6eb808c15a
+# Joueur : SSL Mauzio | Classement affiché : 11 | deck_type : OP11-041
+# Liste : https://deckbuilder.egmanevents.com/?deck=EB04-058:4,OP15-047:2,OP15-113:4,OP15-119:2,OP14-108:3,OP13-042:4,OP12-112:3,OP11-106:4,OP10-112:2,OP07-051:2,OP06-106:4,PRB02-008:1,EB03-053:4,EB03-055:4,EB03-060:3,P-096:4,OP11-041:1&type=optcg
+
+4xEB04-058
+2xOP15-047
+4xOP15-113
+2xOP15-119
+3xOP14-108
+4xOP13-042
+3xOP12-112
+4xOP11-106
+2xOP10-112
+2xOP07-051
+4xOP06-106
+1xPRB02-008
+4xEB03-053
+4xEB03-055
+3xEB03-060
+4xP-096
+1xOP11-041

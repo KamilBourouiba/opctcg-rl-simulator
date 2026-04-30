@@ -1,0 +1,21 @@
+# Egman tournament 009ab10b-49d1-4b3e-9342-5b6eb808c15a
+# Page : https://deckbuilder.egmanevents.com/optcg/tournaments?format=OP15&t=009ab10b-49d1-4b3e-9342-5b6eb808c15a
+# Joueur : Magyo | Classement affiché : 6 | deck_type : OP15-002
+# Liste : https://deckbuilder.egmanevents.com/?deck=OP15-040:4,OP15-053:4,OP15-046:4,OP15-054:4,OP10-059:4,OP15-052:4,OP15-020:4,OP15-021:4,OP15-056:2,OP10-045:4,OP10-049:2,OP10-060:4,OP05-015:3,OP09-118:1,OP05-019:2,OP15-002:1&type=optcg
+
+4xOP15-040
+4xOP15-053
+4xOP15-046
+4xOP15-054
+4xOP10-059
+4xOP15-052
+4xOP15-020
+4xOP15-021
+2xOP15-056
+4xOP10-045
+2xOP10-049
+4xOP10-060
+3xOP05-015
+1xOP09-118
+2xOP05-019
+1xOP15-002

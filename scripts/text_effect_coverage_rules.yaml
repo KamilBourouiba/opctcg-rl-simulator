@@ -1,0 +1,137 @@
+version: 1
+
+# Chaque règle décrit un motif détectable dans le texte de carte.
+# status:
+# - supported: géré (ou approximé) par le moteur Swift texte.
+# - partial: géré partiellement / approximation.
+# - unsupported: non géré.
+#
+# Pour étendre le système quand de nouvelles cartes arrivent:
+# 1) ajoute une règle regex ici,
+# 2) mets status selon l'état réel,
+# 3) relance scripts/audit_text_coverage.py.
+rules:
+  - key: draw_cards
+    label: "Draw cards"
+    status: supported
+    regex: "draw\\s+\\d+\\s+cards?|draw\\s+(?:a|one|1)\\s+card"
+
+  - key: discard_self
+    label: "Discard/trash from own hand"
+    status: supported
+    regex: "discard\\s+\\d+\\s+cards?|trash\\s+\\d+\\s+cards?\\s+from\\s+your\\s+hand"
+
+  - key: discard_opp
+    label: "Opponent discards"
+    status: supported
+    regex: "opponent\\s+trashes?\\s+\\d+\\s+cards?\\s+from\\s+their\\s+hand|trash\\s+1\\s+card\\s+from\\s+your\\s+opponent's\\s+hand"
+
+  - key: ko_cost
+    label: "K.O by cost"
+    status: supported
+    regex: "k\\.?o\\.?\\s+up\\s+to\\s+1\\s+of\\s+your\\s+opponent's\\s+characters?\\s+with\\s+a\\s+cost\\s+of\\s+\\d+\\s+or\\s+less"
+
+  - key: ko_power
+    label: "K.O/trash by power threshold"
+    status: supported
+    regex: "(k\\.?o\\.?|trash)\\s+up\\s+to\\s+1\\s+of\\s+your\\s+opponent's\\s+characters?\\s+with\\s+\\d+\\s*power\\s+or\\s+less|0\\s+power\\s+or\\s+less"
+
+  - key: rest_opp
+    label: "Rest opponent character(s)"
+    status: supported
+    regex: "rest\\s+up\\s+to\\s+\\d+\\s+of\\s+your\\s+opponent's\\s+characters?"
+
+  - key: don_add_active
+    label: "Add DON active"
+    status: supported
+    regex: "add\\s+up\\s+to\\s+\\d+\\s+don!!?\\s+cards?.{0,80}?set\\s+(?:it|them)\\s+as\\s+active"
+
+  - key: don_add_rested
+    label: "Add DON rested"
+    status: supported
+    regex: "add\\s+up\\s+to\\s+\\d+\\s+(?:additional\\s+)?rested\\s+don!!?\\s+cards?|add\\s+up\\s+to\\s+\\d+\\s+additional\\s+don!!?\\s+cards?\\s+and\\s+rest\\s+them"
+
+  - key: don_give_leader
+    label: "Give rested DON to leader"
+    status: supported
+    regex: "give\\s+up\\s+to\\s+\\d+\\s+rested\\s+don(?:!!)?(?:\\s+cards?)?\\s+to\\s+your\\s+leader"
+
+  - key: don_give_char
+    label: "Give rested DON to character"
+    status: supported
+    regex: "give\\s+up\\s+to\\s+\\d+\\s+rested\\s+don(?:!!)?(?:\\s+cards?)?\\s+to\\s+1\\s+of\\s+your\\s+characters?"
+
+  - key: don_refresh_now
+    label: "Set DON active (immediate)"
+    status: supported
+    regex: "set\\s+up\\s+to\\s+\\d+\\s+of\\s+your\\s+don!!?\\s+cards?\\s+as\\s+active"
+
+  - key: don_refresh_eot
+    label: "Set DON active at end of turn"
+    status: supported
+    regex: "set\\s+up\\s+to\\s+\\d+\\s+of\\s+your\\s+don!!?\\s+cards?\\s+as\\s+active\\s+at\\s+the\\s+end\\s+of\\s+this\\s+turn"
+
+  - key: life_gain_self
+    label: "Gain life from own deck"
+    status: supported
+    regex: "add\\s+up\\s+to\\s+\\d+\\s+cards?\\s+from\\s+the\\s+top\\s+of\\s+your\\s+deck\\s+to\\s+the\\s+top\\s+of\\s+your\\s+life\\s+cards?"
+
+  - key: life_trash_opp
+    label: "Trash opponent life"
+    status: supported
+    regex: "trash\\s+up\\s+to\\s+\\d+.{0,120}?opponent'?s\\s+life"
+
+  - key: life_to_owner_hand
+    label: "Top opponent life to owner hand"
+    status: supported
+    regex: "add\\s+up\\s+to\\s+\\d+\\s+(?:card|cards)\\s+from\\s+the\\s+top\\s+of\\s+your\\s+opponent's\\s+life.{0,120}?to\\s+the\\s+owner's\\s+hand"
+
+  - key: power_debuff_opp_char
+    label: "Opponent character power debuff this turn"
+    status: supported
+    regex: "give\\s+up\\s+to\\s+1\\s+of\\s+your\\s+opponent's\\s+characters?\\s+-\\d+\\s*power\\s+during\\s+this\\s+turn"
+
+  - key: search_look_top
+    label: "Search / look top deck and add hand"
+    status: supported
+    regex: "search\\s+your\\s+deck\\s+for\\s+up\\s+to\\s+\\d+|look\\s+at\\s+\\d+\\s+cards?\\s+from\\s+the\\s+top\\s+of\\s+your\\s+deck"
+
+  - key: end_of_your_turn_label
+    label: "[End of Your Turn] segment present"
+    status: supported
+    regex: "\\[end\\s+of\\s+your\\s+turn\\]"
+
+  - key: blocker
+    label: "Blocker keyword"
+    status: supported
+    regex: "\\[blocker\\]"
+
+  - key: counter
+    label: "Counter keyword"
+    status: supported
+    regex: "\\[counter\\]"
+
+  - key: play_from_trash
+    label: "Play from trash"
+    status: supported
+    regex: "play\\s+up\\s+to.{0,100}?from\\s+(?:your|the)\\s+trash"
+
+  - key: return_to_owner_hand
+    label: "Return to owner's hand"
+    status: supported
+    regex: "return\\s+.{0,80}?\\s+to\\s+the\\s+owner'?s\\s+hand"
+
+  - key: place_bottom_owner_deck
+    label: "Place at bottom of owner's deck"
+    status: supported
+    regex: "place\\s+up\\s+to\\s+\\d+\\s+.{0,120}?\\s+at\\s+the\\s+bottom\\s+of\\s+the\\s+owner'?s\\s+deck"
+
+  - key: choose_one
+    label: "Choose one / modal effect"
+    status: supported
+    regex: "choose\\s+one:"
+
+  - key: banish
+    label: "Banish"
+    status: unsupported
+    regex: "banish"

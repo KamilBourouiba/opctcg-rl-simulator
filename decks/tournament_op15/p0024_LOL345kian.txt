@@ -1,0 +1,21 @@
+# Egman tournament 009ab10b-49d1-4b3e-9342-5b6eb808c15a
+# Page : https://deckbuilder.egmanevents.com/optcg/tournaments?format=OP15&t=009ab10b-49d1-4b3e-9342-5b6eb808c15a
+# Joueur : LOL345kian | Classement affiché : 24 | deck_type : OP11-041
+# Liste : https://deckbuilder.egmanevents.com/?deck=OP14-102:4,OP14-104:4,OP14-110:4,OP14-111:3,EB03-055:4,P-096:4,EB03-053:4,OP06-104:4,EB03-060:4,OP11-106:4,EB04-058:4,OP15-047:1,OP12-112:2,OP13-042:3,PRB02-008:1,OP11-041:1&type=optcg
+
+4xOP14-102
+4xOP14-104
+4xOP14-110
+3xOP14-111
+4xEB03-055
+4xP-096
+4xEB03-053
+4xOP06-104
+4xEB03-060
+4xOP11-106
+4xEB04-058
+1xOP15-047
+2xOP12-112
+3xOP13-042
+1xPRB02-008
+1xOP11-041

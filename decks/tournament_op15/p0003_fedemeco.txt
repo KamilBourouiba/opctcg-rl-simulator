@@ -1,0 +1,21 @@
+# Egman tournament 009ab10b-49d1-4b3e-9342-5b6eb808c15a
+# Page : https://deckbuilder.egmanevents.com/optcg/tournaments?format=OP15&t=009ab10b-49d1-4b3e-9342-5b6eb808c15a
+# Joueur : fedemeco | Classement affiché : 3 | deck_type : OP11-041
+# Liste : https://deckbuilder.egmanevents.com/?deck=EB04-058:4,EB03-053:4,EB03-060:4,P-096:4,EB03-055:4,OP06-106:2,OP14-102:4,OP14-104:4,OP14-110:4,OP15-047:1,OP14-111:4,OP11-106:4,OP13-042:2,OP06-104:4,OP15-113:1,OP11-041:1&type=optcg
+
+4xEB04-058
+4xEB03-053
+4xEB03-060
+4xP-096
+4xEB03-055
+2xOP06-106
+4xOP14-102
+4xOP14-104
+4xOP14-110
+1xOP15-047
+4xOP14-111
+4xOP11-106
+2xOP13-042
+4xOP06-104
+1xOP15-113
+1xOP11-041

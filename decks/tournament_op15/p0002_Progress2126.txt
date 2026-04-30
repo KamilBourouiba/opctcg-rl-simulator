@@ -1,0 +1,20 @@
+# Egman tournament 009ab10b-49d1-4b3e-9342-5b6eb808c15a
+# Page : https://deckbuilder.egmanevents.com/optcg/tournaments?format=OP15&t=009ab10b-49d1-4b3e-9342-5b6eb808c15a
+# Joueur : Progress2126 | Classement affiché : 2 | deck_type : OP15-058
+# Liste : https://deckbuilder.egmanevents.com/?deck=OP15-061:4,OP15-066:4,OP15-067:4,OP15-077:4,OP15-076:4,OP15-075:4,OP15-078:4,OP15-118:4,OP12-063:4,OP13-076:2,OP12-071:3,OP10-067:3,OP05-077:3,OP07-064:3,OP15-058:1&type=optcg
+
+4xOP15-061
+4xOP15-066
+4xOP15-067
+4xOP15-077
+4xOP15-076
+4xOP15-075
+4xOP15-078
+4xOP15-118
+4xOP12-063
+2xOP13-076
+3xOP12-071
+3xOP10-067
+3xOP05-077
+3xOP07-064
+1xOP15-058

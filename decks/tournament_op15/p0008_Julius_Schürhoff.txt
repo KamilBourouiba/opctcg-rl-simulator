@@ -1,0 +1,20 @@
+# Egman tournament 009ab10b-49d1-4b3e-9342-5b6eb808c15a
+# Page : https://deckbuilder.egmanevents.com/optcg/tournaments?format=OP15&t=009ab10b-49d1-4b3e-9342-5b6eb808c15a
+# Joueur : Julius Schürhoff | Classement affiché : 8 | deck_type : OP13-001
+# Liste : https://deckbuilder.egmanevents.com/?deck=EB04-002:4,OP01-016:3,OP13-016:4,OP15-035:4,ST21-003:2,OP14-022:4,OP14-031:4,OP13-027:4,OP13-118:4,OP15-032:2,EB04-007:4,OP13-040:3,OP05-038:4,OP08-036:4,OP13-001:1&type=optcg
+
+4xEB04-002
+3xOP01-016
+4xOP13-016
+4xOP15-035
+2xST21-003
+4xOP14-022
+4xOP14-031
+4xOP13-027
+4xOP13-118
+2xOP15-032
+4xEB04-007
+3xOP13-040
+4xOP05-038
+4xOP08-036
+1xOP13-001

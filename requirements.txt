@@ -1,0 +1,17 @@
+# Simulateur texte OPTCG + entraînement (sans Unity)
+torch>=2.1.0
+gymnasium>=0.29.1
+numpy>=1.24.0
+PyYAML>=6.0
+requests>=2.31.0
+pypdf>=4.0.0
+pandas>=2.0.0
+matplotlib>=3.8.0
+Pillow>=10.0.0
+imageio>=2.33.0
+imageio-ffmpeg>=0.4.9
+pytest>=8.0.0
+# macOS : rollout PPO via Core ML / ANE (installé seulement sur Darwin)
+coremltools>=7.0; platform_system == "Darwin"
+# macOS : entraînement PPO MLX (Metal natif, pas de PyTorch sur le pas de gradient)
+mlx>=0.21; sys_platform == "darwin"

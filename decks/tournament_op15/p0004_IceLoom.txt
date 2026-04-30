@@ -1,0 +1,22 @@
+# Egman tournament 009ab10b-49d1-4b3e-9342-5b6eb808c15a
+# Page : https://deckbuilder.egmanevents.com/optcg/tournaments?format=OP15&t=009ab10b-49d1-4b3e-9342-5b6eb808c15a
+# Joueur : IceLoom | Classement affiché : 4 | deck_type : EB02-010
+# Liste : https://deckbuilder.egmanevents.com/?deck=EB02-017:4,PRB02-012:4,ST18-001:4,PRB02-005:3,ST18-004:4,OP14-031:2,EB02-035:4,OP07-064:4,OP15-032:2,OP13-118:2,EB02-061:1,OP15-078:4,OP09-078:4,OP13-040:4,OP08-036:2,OP05-076:2,EB02-010:1&type=optcg
+
+4xEB02-017
+4xPRB02-012
+4xST18-001
+3xPRB02-005
+4xST18-004
+2xOP14-031
+4xEB02-035
+4xOP07-064
+2xOP15-032
+2xOP13-118
+1xEB02-061
+4xOP15-078
+4xOP09-078
+4xOP13-040
+2xOP08-036
+2xOP05-076
+1xEB02-010

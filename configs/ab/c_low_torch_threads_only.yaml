@@ -1,0 +1,6 @@
+# Variante C : ne change presque rien sauf le plafond threads du process principal
+# (utile pour isoler l’effet CPU vs autres réglages). n_envs = config de base si --n-envs 0.
+training:
+  main_torch_num_threads: 2
+  main_torch_interop_threads: 2
+  metrics_jsonl: runs/ab_c_low_threads.jsonl
